@@ -1,12 +1,12 @@
 import argparse
 
-#class TestParser:
-    
-
 parser = argparse.ArgumentParser(prog='file_acceptance', description='accept name of file')
 parser.add_argument('filename', help='add filename for validity checking')
+filename_supplied_as_argument = parser.parse_args()
 
-filename_supplied = parser.parse_args()
+    
 
-print(filename_supplied.filename)
+    
+actual_filename = filename_supplied_as_argument.filename
+print(actual_filename)
 
