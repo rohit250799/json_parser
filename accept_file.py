@@ -22,3 +22,9 @@ def generating_tokens_from_file(actual_filename):
         tokens = tokenize.generate_tokens(f.readline)
         for token in tokens:
             print(token)
+
+def extract_token_for_parser(actual_filename) -> str:
+    token_list = []
+    file_content = open(actual_filename, 'r')
+    if file_content: return file_content.read()
+    return f'The tokens could not be generated unfortunately'
