@@ -20,14 +20,27 @@ class Parser:
         my_stack = My_Stack_for_JSON_validation()
 
     def is_Object(self, my_stack) -> bool:
-        if not self.tokens: return f'Incorrect tokens provided'
+        if not self.tokens:
+            print('Incorrect tokens provided') 
+            return False
         else:
+            my_dict = {'}':'{'}
             for object_token in self.tokens:
-                if object_token == '{':
-                    my_stack.push_token()
+                if object_token in my_dict.values():
+                    my_stack.push_token(object_token)
+                while my_stack and my_stack.peek() == '{':
+                    my_stack.pop_token()
+                    print('Object')
+                    return True
+        return False
 
-    def evaluation(self, generated_string_for_parsing):
+my_stack = My_Stack_for_JSON_validation()                
+my_parser = Parser(generated_string_for_parsing=generated_string_for_parsing)
+print(my_parser.is_Object(my_stack=my_stack))
+
+    # def evaluation(self, generated_string_for_parsing) -> bool:
+    #     if generated_string_for_parsing.
             
 
 # print(f'The tokens are: {extract_token_for_parser(actual_filename=actual_filename)}')
-print(f'The tokens are: {generated_string_for_parsing}')
+# print(f'The tokens are: {generated_string_for_parsing}')
